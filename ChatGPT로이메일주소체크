@@ -1,0 +1,26 @@
+# ChatCPT로 이메일주소체크.pyh
+import re
+
+# 이메일 주소를 체크하는 함수
+def is_valid_email(email):
+    pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+    return re.match(pattern, email) is not None
+
+# 샘플 이메일 주소 리스트
+test_emails = [
+    "test@example.com",
+    "user.name@domain.co.kr",
+    "user_name@domain.com",
+    "username@domain",
+    "username@.com",
+    "user@domain.c",
+    "user@domain.company",
+    "user@domain..com",
+    "user@domain.com.",
+    "user@domain@domain.com"
+]
+
+# 검사 및 결과 출력
+for email in test_emails:
+    result = "유효함" if is_valid_email(email) else "유효하지 않음"
+    print(f"{email} : {result}")
